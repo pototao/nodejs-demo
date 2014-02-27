@@ -1,56 +1,36 @@
-﻿/*
-var xlsx = require('node-xlsx');
+﻿var xlsx_json = require("xlsx-to-json");
+
 var fs = require('fs');
+var path = require('path');
+var dir_src = './res/';
+var dir_dst = './json/';
+var postfix = '.xlsx';
 
-var json_obj = xlsx.parse('./res/test.xlsx');
-var json_str = JSON.stringify(json_obj);
+function walk(dir) {
+	var dir_list = fs.readdirSync(dir);
+	var files = [];
 
-//console.log(JSON.stringify(json_obj));
+	dir_list.forEach(function(item) {
+		if (fs.statSync(dir + item).isFile()) {
+			if (path.extname(item) == postfix) {
+				files.push(item);
+			};
+		};
+	});
 
-fs.writeFile('node-xlsx.json',json_str,function (error) {
-	if (error) {
-		throw error;
-	}
+	return files;
+}
 
-	console.log('saved...');
-});
-*/
+var files_under_dir = walk(dir_src);
 
-/*
-fs.readFile('message.txt', 'utf8', function (err,data) {
-    if (err){
-		throw err;
-	}
-	console.log(data);
-});
-*/
-
-/*
-var xlsx_json = require("xlsx-to-json");
-
-xlsx_json({
-  input: __dirname + '/res/test.xlsx',
-  output: __dirname + '/xlsx-to-json.json'
-}, function(err, result) {
-  if(err) {
-    console.error(err);
-  }else {
-    console.log(result);
-  }
-});
-*/
-
-
-var cv_json = require('convert-json');
-
-cv_json({
-	// now supporting csv, xls, xlsx, xml format
-	input: './res/test.xlsx',
-	output: 'convert-json.json'
+for (var i = 0; i < files_under_dir.length; i++) {
+	console.log('exporting...', files_under_dir[i]);
+	xlsx_json({
+		input: dir_src + files_under_dir[i],
+		output: dir_dst + path.basename(files_under_dir[i], postfix) + '.json'
 	}, function(err, result) {
-	if (err) {
-		console.error(err);
-	} else {
-		console.log(result);
-	}
-});
+		if (err) {
+			console.error(err);
+		} else {}
+	});
+};
