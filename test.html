@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>123</title>
+			<script type="text/javascript">
+			console.log("--------------------------------------");
+			var d = new Date();
+			var hehe = {name:"xiaohei",age:200};
+			var myCar = {};
+			myCar.make = "Ford";
+			myCar.model = "Mustang";
+			myCar.year = 1969;
+			myCar.prototype = hehe;
+
+			console.log(myCar.prototype);
+			function showProps(obj, objName) {
+			  var result = "";
+			  for (var i in obj) {
+			    if (obj.hasOwnProperty(i)) {
+			        result += objName + "." + i + " = " + obj[i] + "\n";
+			    }
+			  }
+			  return result;
+			}
+			console.log(showProps(myCar, "myCar"));
+		</script>
+</head>
+<body>
+
+</body>
+</html>

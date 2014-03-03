@@ -252,8 +252,9 @@ myConcat(", ", "red", "orange", "blue");
 myConcat();
 */
 
-/*
-var myCar = new Object();
+console.log("--------------------------------------");
+var d = new Date();
+var myCar = {};
 myCar.make = "Ford";
 myCar.model = "Mustang";
 myCar.year = 1969;
@@ -279,7 +280,7 @@ function listAllProperties(o){
   
   return result; 
 }
-*/
+
 
 /*var arr = new Array(element0, element1, ..., elementN);
 var arr = Array(element0, element1, ..., elementN);
@@ -440,6 +441,7 @@ console.log("func",typeof isNumber);*/
 var today = new Date();
 console.log("date:",today.getFullYear());*/
 
+console.log("-------------------------------");
 console.log("Array",typeof Array);
 console.log("Number",typeof Number);
 console.log("Function",typeof Function);
@@ -449,22 +451,11 @@ console.log("RegExp",typeof RegExp);
 console.log("string",typeof String);
 
 
-var o = {
-  a: 2,
-  m: function(b){
-    return this.a + 1;
-  }
-};
-
-console.log(o.m()); // 3
-// 当调用 o.m 时,'this'指向了o.
-
-var p = Object.create(o);
-// p是一个对象, p.[[Prototype]]是o.
-
-console.log(p.a);
-p.a = 12; // 创建p的自身属性a.
-console.log(p.m()); // 13
-// 调用p.m时, 'this'指向 p. 'this.a'则是12.
-
-console.log(p.Prototype);
+var myObject = {    
+    variableKey : 123,
+    functionKey : function() {
+      console.log("hahah");
+    }
+}
+console.log(myObject.variableKey);
+myObject.functionKey();
