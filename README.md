@@ -2,6 +2,8 @@ nodejs 的一些小demo，还有小工具。
 
 实验环境 win7_x64 + nodejs_v0.10.25
 
+如有问题可以到QQ群内讨论：223460081
+
 ## node basics
 	使用方式:
 		1. 下载nodejs.msi 安装,配置环境变量 把node根目录放到path里面。
