@@ -1,7 +1,6 @@
 /*
  * More details here http://mongoosejs.com/docs/guide.html
  */
-//potato visit your work!!!!!!
 //require mongoose model defines in model/blog.js (see Files)
 var BlogPost = require("./model/blog");
 
